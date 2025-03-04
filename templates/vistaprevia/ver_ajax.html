@@ -5,20 +5,20 @@
 <div class="container">
   <div class="row">
       <div class="col-12 prueba" style="padding-top:200px;">
-
       </div>
   </div>
 </div>
+
 <div class="container">
   <div class="row">
       <div class="col-12 prueba">
-        <section id="todos_los_productos" class ="row" >
-            <h2>Seleccionar producto</h2>
+        <section id="todos_los_productos" class="row">
+            <h2 class="text-center">Seleccionar producto</h2>
             <hr/>
             <div id="contenedor_filtros" class="row">
-               <div id="filtros_productos"  class="col-xs-12">
-                   <form id="searchr-form"   action="" method="post" >{% csrf_token  %}
-                       <div class="campo_busqueda col-xs-12 "  >
+               <div id="filtros_productos" class="col-xs-12">
+                   <form id="searchr-form" action="" method="post">{% csrf_token %}
+                       <div class="campo_busqueda col-xs-12">
                            {{ search }}
                            <input type="button" id="boton_prod" value="Ver datos"/>
                        </div>
@@ -31,21 +31,24 @@
       </div>
   </div>
 </div>
+
+<!-- BOTÓN DE VOLVER MÁS ARRIBA -->
+<div class="container text-center mt-5">
+    <button onclick="window.history.back()" class="btn btn-secondary btn-sm" 
+            style="padding: 6px 12px !important; font-size: 14px !important;">
+        ← Volver atrás
+    </button>
+</div>
+
 <div class="container">
-<div class="row">
-    <div class="col-12 prueba" style="padding-bottom: 250px;">
-       
-    </div>
-</div>
-</div>
-  <div class="container">
-      <div class="row">
-          <div class="col-12 prueba" style="padding-top:200px;">
- 
-          </div>
+  <div class="row">
+      <div class="col-12 prueba" style="padding-bottom: 250px;">
       </div>
   </div>
-{% endblock  %}
+</div>
+
+{% endblock %}
+
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script> 
 <script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
@@ -54,6 +57,4 @@
        source:"/buscar_libro/"
    });
 </script>
-
-
 {% endblock %}
