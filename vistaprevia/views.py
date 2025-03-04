@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from tienda.forms import SearchLibroForm
 import json
 from django.http import HttpResponse
-
+from django.shortcuts import HttpResponse
 
 def para_ajax(request):
     params={}
@@ -39,7 +39,32 @@ class BuscarLibro(View):
         mimetype="application/json"
         return HttpResponse(data_json, mimetype)
 
+class BuscarLibro2(View):
 
+    def is_ajax(self, request):
+        return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
+    def get(self, request):
+        if self.is_ajax(request=request):
+            q = request.GET['valor']
+            libro = Producto.objects.filter(producto__icontains=q)
+            results = []
+            for rec in libro:
+                print(rec.producto)
+                print(rec.estado)
+                print(rec.imagen)
+
+                data = {}
+                data['producto'] = rec.producto
+                data['estado'] = rec.estado
+                data['ruta_imagen'] = str(rec.imagen)
+                results.append(data)
+            data_json = json.dumps(results)
+
+        else:
+            data_json = "fallo"
+        mimetype = "application/json"
+        return HttpResponse(data_json, mimetype)
 
     
 
