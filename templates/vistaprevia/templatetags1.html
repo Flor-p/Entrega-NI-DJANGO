@@ -83,7 +83,7 @@
         {% for producto in los_productos %}
             <div class="col-12 col-lg-4 mb-4">
                 <div class="card" style="width: 18rem;">
-                    <img src="{% static 'img/1.png' %}{{ producto.imagen }}" class="card-img-top" alt="{{ producto.producto }}">
+                    <img src="{% static 'img/1.png' %} {{ producto.imagen }}" class="card-img-top" alt="{{ producto.producto }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ producto.producto }}</h5>
                         <p class="card-text">{{ producto.descripcion|slice:":95" }}</p>
