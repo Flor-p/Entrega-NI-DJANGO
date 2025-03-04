@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block tienda %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {% for producto in productos %}
+                <a href="{% url 'ver' producto.id %}">
+                    {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}" style="width: 30%;" alt="Imagen de {{ producto.nombre }}">
+                    {% else %}
+                        <img src="{% static 'img/placeholder.png' %}" style="width: 30%;" alt="Imagen no disponible">
+                    {% endif %}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
